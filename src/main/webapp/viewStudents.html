@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Course</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/form-validation.css" rel="stylesheet">
+    <link href="assets/css/signin.css" rel="stylesheet">
+    <link href="assets/css/menubar.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<div class="topnav" style="position: absolute; top:0; width: 100%; box-shadow: 5px 5px 3px lightgray;">
+    <a href=""><img src="assets/img/iiitb_logo.jpg" style="width: 35px; height: 25px; float: left; vertical-align: center"/></a>
+    <a href="">My Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#about" style="float:right" onclick="logout()">Logout</a>
+</div>
+<div style="margin: auto">
+        <form class="form-signin" id="choose-course" action="studentsTable.html">
+            <h2 style="margin-bottom: 20px">Academic ERP</h2>
+            <p class="lead">To view Students Details please select course from below field you teach</p>
+
+
+                <label for="courses">Courses</label>
+                <select class="custom-select d-block w-100" id="courses" required>
+                    <option value="">Choose...</option>
+                    <option value="hello">hello</option>
+                </select>
+                <!--<div class="invalid-feedback">
+                    Please select a valid course/s.
+                </div>-->
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue</button>
+        </form>
+
+
+</div>
+</body>
+<script>
+    function logout() {
+        sessionStorage.clear();
+        location.href = "index.html";
+    }
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/student-validation.js"></script>
+</html>

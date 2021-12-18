@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Students Table</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        #students {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    #students td, #students th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    }
+
+    #students tr:nth-child(even){background-color: #f2f2f2;}
+
+    #students tr:hover {background-color: #ddd;}
+
+    #students th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #007bff;
+    color: white;
+    }
+        .center-div {
+            width: 100%;
+            max-width: 1000px;
+            padding: 15px;
+            margin: auto;
+        }
+    </style>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/form-validation.css" rel="stylesheet">
+    <link href="assets/css/signin.css" rel="stylesheet">
+    <link href="assets/css/menubar.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="topnav" style="position: absolute; top:0; width: 100%; box-shadow: 5px 5px 3px lightgray;">
+    <a href=""><img src="assets/img/iiitb_logo.jpg" style="width: 35px; height: 25px; float: left; vertical-align: center"/></a>
+    <a href="">My Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#about" style="float:right" onclick="logout()">Logout</a>
+</div>
+<div class="center-div" style="margin-top: 20px;">
+    <!--<img alt="" class="d-block mx-auto mb-4" height="72" src="assets/svg/bootstrap-solid.svg" width="72">-->
+    <h2>Academic ERP</h2>
+    <p class="lead">These students have enrolled for selected course.</p>
+
+    <div style="vertical-align: middle; horiz-align: center">
+        <table id="students">
+            <!--<tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>CGPA</th>
+                <th>Total Credits</th>
+                <th>Graduation Year</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>aaa</td>
+                <td>bbb</td>
+                <td>ccc</td>
+            </tr>-->
+
+        </table>
+    </div>
+
+</div>
+
+
+
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script src="vendor/bootstrap/js/popper.js"></script>-->
+
+<!--<script src="js/main.js"></script>-->
+
+</body>
+<script>
+    function logout() {
+        sessionStorage.clear();
+        location.href = "index.html";
+    }
+</script>
+<script src="assets/js/student-table-validation.js"></script>
+</html>

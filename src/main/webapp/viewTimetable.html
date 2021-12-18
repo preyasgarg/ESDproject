@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Timetable</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        #schedule {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #schedule td, #schedule th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #schedule tr:nth-child(even){background-color: #f2f2f2;}
+
+        #schedule tr:hover {background-color: #ddd;}
+
+        #schedule th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            width: 400px;
+        }
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+        .center-div {
+            width: 100%;
+            max-width: 1000px;
+            padding: 15px;
+            margin: auto;
+        }
+    </style>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/form-validation.css" rel="stylesheet">
+    <link href="assets/css/signin.css" rel="stylesheet">
+    <link href="assets/css/menubar.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="topnav" style="position: absolute; top:0; width: 100%; box-shadow: 5px 5px 3px lightgray;">
+    <a href=""><img src="assets/img/iiitb_logo.jpg" alt="logo" style="width: 35px; height: 25px; float: left; vertical-align: center"/></a>
+    <a href="">My Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#about" style="float:right" onclick="logout()">Logout</a>
+</div>
+<div class="center-div" style="margin-top: 20px;">
+    <h2>Academic ERP</h2>
+    <p class="lead">This is your Time Table for selected term and year.</p>
+    <a href="" style="color: black; float:right; font-size: 17px; margin-bottom: 10px;" id="btnExport" onclick="generate()">Print</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript">
+        function generate() {
+            var doc = new jsPDF('p', 'pt', 'letter');
+            var htmlstring = '';
+            var tempVarToCheckPageHeight = 0;
+            var pageHeight = 0;
+            pageHeight = doc.internal.pageSize.height;
+            specialElementHandlers = {
+                // element with id of "bypass" - jQuery style selector
+                '#bypassme': function(element, renderer) {
+                    // true = "handled elsewhere, bypass text extraction"
+                    return true
+                }
+            };
+            margins = {
+                top: 150,
+                bottom: 60,
+                left: 20,
+                right: 40,
+                width: 600
+            };
+            var y = 20;
+            doc.setLineWidth(2);
+            doc.text(250, y = y + 30, "TIME TABLE");
+            doc.autoTable({
+                html: '#schedule',
+                startY: 70,
+                theme: 'grid',
+                columnStyles: {
+                    0: {
+                        cellWidth: 90,
+                    },
+                    1: {
+                        cellWidth: 90,
+                    },
+                    2: {
+                        cellWidth: 90,
+                    },
+                    3: {
+                        cellWidth: 90,
+                    },
+                    4: {
+                        cellWidth: 90,
+                    },
+                    5: {
+                        cellWidth: 90,
+                    }
+                },
+                styles: {
+                    minCellHeight: 40
+                }
+            })
+            doc.save('timetable.pdf');
+        }
+    </script>
+    <!--<img alt="" class="d-block mx-auto mb-4" height="72" src="assets/svg/bootstrap-solid.svg" width="72">-->
+
+<div style="vertical-align: middle; horiz-align: center">
+
+    <table id="schedule">
+        <!--<tr>
+                         <th>MON</th>
+                            <th>TUE</th>
+                            <th>WED</th>
+                            <th>THU</th>
+                            <th>FRI</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                            <td>aaa</td>
+                            <td>bbb</td>
+                            <td>ccc</td>
+                       </tr>-->
+
+    </table>
+
+</div>
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script src="vendor/bootstrap/js/popper.js"></script>-->
+
+<!--<script src="js/main.js"></script>-->
+
+</div>
+</body>
+<script>
+    function logout() {
+        sessionStorage.clear();
+        location.href = "index.html";
+    }
+</script>
+<script src="assets/js/timetable-validation.js"></script>
+</html>
